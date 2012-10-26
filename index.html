@@ -32,7 +32,7 @@
       <section>
         <h3>Usage</h3>
 
-<p>Let's say you've got some deeply nested data in JavaScript objects that you've just parsed from a JSON API response. For each result, you need to do something if there's some deeply nested data present:</p>
+<p>Let's say you've got some deeply nested data in JavaScript objects that you've just parsed from a JSON API response. For each result, you need to do something if there's some sort of data present:</p>
 
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">fatherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
 
@@ -49,7 +49,7 @@
 
 <p>Whoops! You shot yourself in the foot. You got a <code>TypeError</code> because you had no guarantee that the family had a father, or that the father had info present, or that his name was returned! You fix it by writing this monstrosity:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fartherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">farherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">families</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">father</span> <span class="o">=</span> <span class="nx">families</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">father</span><span class="p">;</span>
@@ -78,7 +78,7 @@
 
 <h2>Details</h2>
 
-<p>SteelToe is a tiny JavaScript function that makes it safe to traipse about objects without worrying about keys may or may not exist, and if its safe to try and look inside of them. There are two ways to do it:</p>
+<p>SteelToe is a tiny JavaScript function that makes it safe to traipse about objects without worrying about whether keys may or may not exist, and whether it's safe to try and look inside of them. There are two ways to use it:</p>
 
 <h3>Method #1</h3>
 
