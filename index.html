@@ -39,7 +39,8 @@
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
 
 <span class="nx">object</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
-<span class="nx">object</span><span class="p">(</span><span class="s1">'info'</span><span class="p">)(</span><span class="s1">'name'</span><span class="p">)(</span><span class="s1">'last'</span><span class="p">)();</span>      <span class="c1">// 'Clem'</span>
+<span class="nx">object</span><span class="p">(</span><span class="s1">'info'</span><span class="p">)(</span><span class="s1">'name'</span><span class="p">)(</span><span class="s1">'last'</span><span class="p">)();</span>           <span class="c1">// 'Clem'</span>
+<span class="nx">object</span><span class="p">(</span><span class="s1">'info'</span><span class="p">)(</span><span class="s1">'features'</span><span class="p">)(</span><span class="s1">'hairColor'</span><span class="p">)();</span>  <span class="c1">// undefined</span>
 </pre></div>
 
 <h3>Method #2</h3>
@@ -47,7 +48,8 @@
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
 
 <span class="nx">object</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
-<span class="nx">object</span><span class="p">.</span><span class="nx">walk</span><span class="p">(</span><span class="s1">'info.name.last'</span><span class="p">);</span>      <span class="c1">// 'Clem'</span>
+<span class="nx">object</span><span class="p">.</span><span class="nx">walk</span><span class="p">(</span><span class="s1">'info.name.last'</span><span class="p">);</span>          <span class="c1">// 'Clem'</span>
+<span class="nx">object</span><span class="p">.</span><span class="nx">walk</span><span class="p">(</span><span class="s1">'info.features.hairColor'</span><span class="p">);</span> <span class="c1">// undefined</span>
 </pre></div>
 
 <h2>Details</h2>
