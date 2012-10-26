@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SteelToe by jclem</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">SteelToe</h1>
+        <p class="header">Don't shoot yourself in the foot traversing objects.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/jclem/steeltoe/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/jclem/steeltoe/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/jclem/steeltoe">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/jclem">jclem</a></p>
+
+
+      </header>
+      <section>
+        <h3>Usage</h3>
+
+<p>Let's say you've got some deeply nested data in JavaScript objects that you've just parsed from a JSON API response. For each result, you need to do something if there's some deeply nested data present:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fatherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">families</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">first</span> <span class="o">=</span> <span class="nx">families</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">father</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">first</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">first</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fatherFirstNames</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">first</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// TypeError: 'undefined' is not an object (evaluating 'family.father.info.name.first')</span>
+</pre></div>
+
+<p>Whoops! You shot yourself in the foot. You got a <code>TypeError</code> because you had no guarantee that the family had a father, or that the father had info present, or that his name was returned! You fix it by writing this monstrosity:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fartherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">families</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">father</span> <span class="o">=</span> <span class="nx">families</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">father</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">father</span> <span class="o">&amp;&amp;</span> <span class="nx">father</span><span class="p">.</span><span class="nx">info</span> <span class="o">&amp;&amp;</span> <span class="nx">father</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">name</span> <span class="o">&amp;&amp;</span> <span class="nx">father</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">first</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fatherFirstNames</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">father</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">first</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Or, you could use SteelToe and write this:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fatherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">families</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">family</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">families</span><span class="p">[</span><span class="nx">i</span><span class="p">]),</span>
+      <span class="nx">name</span> <span class="o">=</span> <span class="nx">family</span><span class="p">.</span><span class="nx">walk</span><span class="p">(</span><span class="s1">'father.info.name.first'</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fatherFirstNames</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">fatherFirstNames</span><span class="p">;</span> <span class="c1">// ["Hank", "Dale", "Bill"]</span>
+</pre></div>
+
+<h2>Details</h2>
+
+<p>SteelToe is a tiny JavaScript function that makes it safe to traipse about objects without worrying about keys may or may not exist, and if its safe to try and look inside of them. There are two ways to do it:</p>
+
+<h3>Method #1</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+
+<span class="nx">object</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
+<span class="nx">object</span><span class="p">(</span><span class="s1">'info'</span><span class="p">)(</span><span class="s1">'name'</span><span class="p">)(</span><span class="s1">'last'</span><span class="p">)();</span>      <span class="c1">// 'Clem'</span>
+</pre></div>
+
+<h3>Method #2</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+
+<span class="nx">object</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
+<span class="nx">object</span><span class="p">.</span><span class="nx">walk</span><span class="p">(</span><span class="s1">'info.name.last'</span><span class="p">);</span>      <span class="c1">// 'Clem'</span>
+</pre></div>
+
+<h2>The End</h2>
+
+<p>SteelToe was made when a coworker of mine said that he wished someone would write a JavaScript library that would allow him to traverse objects without shooting himself in the foot, and that the library was called SteelToe.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-35888766-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
