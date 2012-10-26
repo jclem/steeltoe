@@ -32,6 +32,26 @@
       <section>
         <h3>Usage</h3>
 
+<p>SteelToe is a tiny JavaScript function that makes it safe to traipse about objects without worrying about whether keys may or may not exist, and whether it's safe to try and look inside of them. There are two ways to use it:</p>
+
+<h3>Method #1</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+
+<span class="nx">object</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
+<span class="nx">object</span><span class="p">(</span><span class="s1">'info'</span><span class="p">)(</span><span class="s1">'name'</span><span class="p">)(</span><span class="s1">'last'</span><span class="p">)();</span>      <span class="c1">// 'Clem'</span>
+</pre></div>
+
+<h3>Method #2</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+
+<span class="nx">object</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
+<span class="nx">object</span><span class="p">.</span><span class="nx">walk</span><span class="p">(</span><span class="s1">'info.name.last'</span><span class="p">);</span>      <span class="c1">// 'Clem'</span>
+</pre></div>
+
+<h2>Details</h2>
+
 <p>Let's say you've got some deeply nested data in JavaScript objects that you've just parsed from a JSON API response. For each result, you need to do something if there's some sort of data present:</p>
 
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">fatherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
@@ -74,26 +94,6 @@
 <span class="p">}</span>
 
 <span class="nx">fatherFirstNames</span><span class="p">;</span> <span class="c1">// ["Hank", "Dale", "Bill"]</span>
-</pre></div>
-
-<h2>Details</h2>
-
-<p>SteelToe is a tiny JavaScript function that makes it safe to traipse about objects without worrying about whether keys may or may not exist, and whether it's safe to try and look inside of them. There are two ways to use it:</p>
-
-<h3>Method #1</h3>
-
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
-
-<span class="nx">object</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
-<span class="nx">object</span><span class="p">(</span><span class="s1">'info'</span><span class="p">)(</span><span class="s1">'name'</span><span class="p">)(</span><span class="s1">'last'</span><span class="p">)();</span>      <span class="c1">// 'Clem'</span>
-</pre></div>
-
-<h3>Method #2</h3>
-
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
-
-<span class="nx">object</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
-<span class="nx">object</span><span class="p">.</span><span class="nx">walk</span><span class="p">(</span><span class="s1">'info.name.last'</span><span class="p">);</span>      <span class="c1">// 'Clem'</span>
 </pre></div>
 
 <h2>The End</h2>
