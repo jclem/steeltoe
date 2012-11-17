@@ -34,7 +34,9 @@
 
 <p>SteelToe is a tiny JavaScript function that makes it safe to traipse about objects without worrying about whether keys may or may not exist, and whether it's safe to try and look inside of them. There are two ways to use it:</p>
 
-<h3>Method #1</h3>
+<h3>Getting Values</h3>
+
+<h4>Method #1</h4>
 
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
 
@@ -43,13 +45,25 @@
 <span class="nx">object</span><span class="p">(</span><span class="s1">'info'</span><span class="p">)(</span><span class="s1">'features'</span><span class="p">)(</span><span class="s1">'hairColor'</span><span class="p">)();</span>  <span class="c1">// undefined</span>
 </pre></div>
 
-<h3>Method #2</h3>
+<h4>Method #2</h4>
 
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
 
 <span class="nx">object</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
 <span class="nx">object</span><span class="p">.</span><span class="nx">walk</span><span class="p">(</span><span class="s1">'info.name.last'</span><span class="p">);</span>          <span class="c1">// 'Clem'</span>
 <span class="nx">object</span><span class="p">.</span><span class="nx">walk</span><span class="p">(</span><span class="s1">'info.features.hairColor'</span><span class="p">);</span> <span class="c1">// undefined</span>
+</pre></div>
+
+<h3>Setting Values</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">jonathan</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">},</span>
+    <span class="nx">toe</span> <span class="o">=</span> <span class="nx">SteelToe</span><span class="p">(</span><span class="nx">jonathan</span><span class="p">);</span>
+
+<span class="nx">toe</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'info.name.middle'</span><span class="p">,</span> <span class="s1">'Tyler'</span><span class="p">);</span>
+<span class="nx">toe</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'info.favorites.movie'</span><span class="p">,</span> <span class="s1">'Harold &amp; Maude'</span><span class="p">);</span>
+
+<span class="nx">jonathan</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">middle</span><span class="p">;</span> <span class="c1">// Tyler</span>
+<span class="nx">jonathan</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">favorites</span><span class="p">.</span><span class="nx">movie</span><span class="p">;</span> <span class="c1">// Harold &amp; Maude</span>
 </pre></div>
 
 <h2>Details</h2>
