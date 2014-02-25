@@ -48,7 +48,9 @@ jonathan.info.favorites.movie; // Harold & Maude
 
 ## Details
 
-Let's say you've got some deeply nested data in JavaScript objects that you've just parsed from a JSON API response. For each result, you need to do something if there's some sort of data present:
+Let's say you've got some deeply nested data in JavaScript objects that you've
+just parsed from a JSON API response. For each result, you need to do something
+if there's some sort of data present:
 
 ```javascript
 var fatherFirstNames = [];
