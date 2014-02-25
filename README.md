@@ -1,4 +1,4 @@
-# SteelToe
+# [SteelToe](http://jclem.github.io/steeltoe/)
 
 Don't shoot yourself in the foot while traversing JavaScript objects.
 
