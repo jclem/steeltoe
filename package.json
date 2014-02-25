@@ -1,0 +1,27 @@
+{
+  "name": "steeltoe",
+  "version": "1.0.0",
+  "description": "Don't shoot yourself in the foot while traversing JavaScript objects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/jasmine-node/bin/jasmine-node spec/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jclem/steeltoe"
+  },
+  "keywords": [
+    "objects",
+    "traversal",
+    "autovivification"
+  ],
+  "author": "Jonathan Clem",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jclem/steeltoe/issues"
+  },
+  "homepage": "https://github.com/jclem/steeltoe",
+  "devDependencies": {
+    "jasmine-node": "~1.13.1"
+  }
+}
