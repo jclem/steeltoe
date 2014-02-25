@@ -4,11 +4,17 @@ Don't shoot yourself in the foot while traversing JavaScript objects.
 
 ## Get It
 
-It's a single JavaScript file&mdash;link to the raw code [here](https://raw.github.com/jclem/steeltoe/master/public/javascripts/steeltoe.js).
+```sh
+$ npm install steeltoe --save
+```
 
 ## Usage
 
-SteelToe is a tiny JavaScript function that makes it safe to traipse about objects without worrying about whether keys may or may not exist, and whether it's safe to try and look inside of them. It also provides basic [autovivification](http://en.wikipedia.org/wiki/Autovivification) of objects through the `set` function.
+SteelToe is a tiny JavaScript function that makes it safe to traipse about
+objects without worrying about whether keys may or may not exist, and whether
+it's safe to try and look inside of them. It also provides basic
+[autovivification](http://en.wikipedia.org/wiki/Autovivification) of objects
+through the `set` function.
 
 ### Getting Values
 
@@ -58,7 +64,9 @@ for (var i = 0; i < families.length; i ++) {
 // TypeError: 'undefined' is not an object (evaluating 'family.father.info.name.first')
 ```
 
-Whoops! You shot yourself in the foot. You got a `TypeError` because you had no guarantee that the family had a father, or that the father had info present, or that his name was returned! You fix it by writing this monstrosity:
+Whoops! You shot yourself in the foot. You got a `TypeError` because you had no
+guarantee that the family had a father, or that the father had info present, or
+that his name was returned! You fix it by writing this monstrosity:
 
 ```javascript
 var farherFirstNames = [];
@@ -90,4 +98,6 @@ fatherFirstNames; // ["Hank", "Dale", "Bill"]
 
 ## The End
 
-SteelToe was made when a coworker of mine said that he wished someone would write a JavaScript library that would allow him to traverse objects without shooting himself in the foot, and that the library was called SteelToe.
+SteelToe was made when a coworker of mine said that he wished someone would
+write a JavaScript library that would allow him to traverse objects without
+shooting himself in the foot, and that the library was called SteelToe.

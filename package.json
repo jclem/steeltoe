@@ -1,6 +1,6 @@
 {
   "name": "steeltoe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Don't shoot yourself in the foot while traversing JavaScript objects.",
   "main": "index.js",
   "scripts": {
