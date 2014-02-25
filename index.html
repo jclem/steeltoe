@@ -17,7 +17,7 @@
     <div class="wrapper">
       <header>
         <h1 class="header">SteelToe</h1>
-        <p class="header">Don't shoot yourself in the foot traversing objects.</p>
+        <p class="header">Don&#39;t shoot yourself in the foot traversing objects.</p>
 
         <ul>
           <li class="download"><a class="buttons" href="https://github.com/jclem/steeltoe/zipball/master">Download ZIP</a></li>
@@ -30,31 +30,36 @@
 
       </header>
       <section>
-        <h2>Usage</h2>
+        <h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>SteelToe is a tiny JavaScript function that makes it safe to traipse about objects without worrying about whether keys may or may not exist, and whether it's safe to try and look inside of them. It also provides basic <a href="http://en.wikipedia.org/wiki/Autovivification">autovivification</a> of objects through the <code>set</code> function.</p>
 
-<h3>Getting Values</h3>
+<h3>
+<a name="getting-values" class="anchor" href="#getting-values"><span class="octicon octicon-link"></span></a>Getting Values</h3>
 
-<h4>Method #1</h4>
+<h4>
+<a name="method-1" class="anchor" href="#method-1"><span class="octicon octicon-link"></span></a>Method #1</h4>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
 
 <span class="nx">steelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">)(</span><span class="s1">'info'</span><span class="p">)(</span><span class="s1">'name'</span><span class="p">)(</span><span class="s1">'last'</span><span class="p">)();</span>           <span class="c1">// 'Clem'</span>
 <span class="nx">steelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">)(</span><span class="s1">'info'</span><span class="p">)(</span><span class="s1">'features'</span><span class="p">)(</span><span class="s1">'hairColor'</span><span class="p">)();</span>  <span class="c1">// undefined</span>
 </pre></div>
 
-<h4>Method #2</h4>
+<h4>
+<a name="method-2" class="anchor" href="#method-2"><span class="octicon octicon-link"></span></a>Method #2</h4>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
 
 <span class="nx">steelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">'info.name.last'</span><span class="p">);</span>          <span class="c1">// 'Clem'</span>
 <span class="nx">steelToe</span><span class="p">(</span><span class="nx">object</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">'info.features.hairColor'</span><span class="p">);</span> <span class="c1">// undefined</span>
 </pre></div>
 
-<h3>Setting Values</h3>
+<h3>
+<a name="setting-values" class="anchor" href="#setting-values"><span class="octicon octicon-link"></span></a>Setting Values</h3>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">jonathan</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">},</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">jonathan</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">info</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="p">{</span> <span class="nx">first</span><span class="o">:</span> <span class="s1">'Jonathan'</span><span class="p">,</span> <span class="nx">last</span><span class="o">:</span> <span class="s1">'Clem'</span> <span class="p">}</span> <span class="p">}</span> <span class="p">},</span>
 
 <span class="nx">steelToe</span><span class="p">(</span><span class="nx">jonathan</span><span class="p">).</span><span class="nx">set</span><span class="p">(</span><span class="s1">'info.name.middle'</span><span class="p">,</span> <span class="s1">'Tyler'</span><span class="p">);</span>
 <span class="nx">steelToe</span><span class="p">(</span><span class="nx">jonathan</span><span class="p">).</span><span class="nx">set</span><span class="p">(</span><span class="s1">'info.favorites.movie'</span><span class="p">,</span> <span class="s1">'Harold &amp; Maude'</span><span class="p">);</span>
@@ -63,11 +68,12 @@
 <span class="nx">jonathan</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">favorites</span><span class="p">.</span><span class="nx">movie</span><span class="p">;</span> <span class="c1">// Harold &amp; Maude</span>
 </pre></div>
 
-<h2>Details</h2>
+<h2>
+<a name="details" class="anchor" href="#details"><span class="octicon octicon-link"></span></a>Details</h2>
 
 <p>Let's say you've got some deeply nested data in JavaScript objects that you've just parsed from a JSON API response. For each result, you need to do something if there's some sort of data present:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fatherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fatherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">families</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">first</span> <span class="o">=</span> <span class="nx">families</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">father</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">first</span><span class="p">;</span>
@@ -82,7 +88,7 @@
 
 <p>Whoops! You shot yourself in the foot. You got a <code>TypeError</code> because you had no guarantee that the family had a father, or that the father had info present, or that his name was returned! You fix it by writing this monstrosity:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">farherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">farherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">families</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">father</span> <span class="o">=</span> <span class="nx">families</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">father</span><span class="p">;</span>
@@ -95,7 +101,7 @@
 
 <p>Or, you could use SteelToe and write this:</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">fatherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">fatherFirstNames</span> <span class="o">=</span> <span class="p">[];</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">families</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">steelToe</span><span class="p">(</span><span class="nx">families</span><span class="p">[</span><span class="nx">i</span><span class="p">]).</span><span class="nx">get</span><span class="p">(</span><span class="s1">'father.info.name.first'</span><span class="p">);</span>
@@ -108,12 +114,13 @@
 <span class="nx">fatherFirstNames</span><span class="p">;</span> <span class="c1">// ["Hank", "Dale", "Bill"]</span>
 </pre></div>
 
-<h2>The End</h2>
+<h2>
+<a name="the-end" class="anchor" href="#the-end"><span class="octicon octicon-link"></span></a>The End</h2>
 
 <p>SteelToe was made when a coworker of mine said that he wished someone would write a JavaScript library that would allow him to traverse objects without shooting himself in the foot, and that the library was called SteelToe.</p>
       </section>
       <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
