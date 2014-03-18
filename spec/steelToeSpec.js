@@ -117,5 +117,15 @@ describe("steelToe", function () {
         expect(toe('info')('birthplace')('city')()).toEqual('Indianapolis');
       });
     });
+
+    describe("Using an empty string in one of the properties", function () {
+        beforeEach(function () {
+          toe.set('info.birthplace.city', 'Indianapolis');
+        });
+
+        it("should return undefined", function () {
+          expect(toe('info')('')('city')()).toEqual(undefined);
+        });
+    });
   });
 });

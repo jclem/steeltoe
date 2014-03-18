@@ -5,7 +5,7 @@ function steelToe (object) {
     if (object && property) {
       return steelToe(object[property]);
     } else {
-      return property ? steelToe() : object;
+      return (property || property === '') ? steelToe() : object;
     }
   }
 
